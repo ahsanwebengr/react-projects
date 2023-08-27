@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+}
+.app {
+  max-width: 420px;
+  padding: 0 7px;
+  margin: 0 auto;
+}
+
+.app h1 {
+  text-align: center;
+  text-transform: capitalize;
+  color: rgb(37, 37, 37);
+  font-weight: 900;
+  margin: 22px 0 20px 0;
+}
+
+.todo-form {
+  display: flex;
+  gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.todo-form input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.todo-form input:focus {
+  outline: 2px solid rgb(8, 6, 133);
+  outline-offset: 1px;
+}
+
+.todo-form button {
+  background-color: rgb(8, 6, 133);
+  outline: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 3px;
+  width: 60px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  transition: all cubic-bezier(0.39, 0.575, 0.565, 1) ease-in-out;
+}
+
+.todo-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.todo-form button:hover {
+  background-color: rgb(0, 0, 124);
+}
+.task-container {
+  max-height: 420px;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.task-container::-webkit-scrollbar {
+  display: none;
+}
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid rgb(64, 64, 87);
+  margin-bottom: 20px;
+}
+
+.task p {
+  color: #111;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.no-data {
+  text-align: center;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.actions .delete-btn {
+  color: rgb(201, 21, 21);
+}
+.actions .edit-btn {
+  color: rgb(24, 23, 23);
+}
+
+.rotate-animation {
+  animation: rotate360 2s linear infinite;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
