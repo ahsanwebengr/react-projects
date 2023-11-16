@@ -5,27 +5,31 @@ const router = express.Router();
 import User from '../models/User.js';
 import Post from '../models/Post.js';
 
-//UPDATE
+//CREATE POST
+router.post("/", async (req, res) => {
+    const newPost = new Post(req.body);
+    try {
+        const savedPost = await newPost.save();
+        res.status(200).json(savedPost);
+    } catch (error) {
+        res.status(500).json(error);
+
+    }
+});
+//UPDATE POST
 router.put("/:id", async (req, res) => {
-    if (req.body.userId === req.params.id) {
-        if (req.body.password) {
-            const salt = await bcrypt.genSalt(10);
-            req.body.password = await bcrypt.hash(req.body.password, salt);
+    try {
+        const post = await Post.findById(req.params.id);
+        if (post.username === req.body.username) {
+            try {
+            } catch (error) {
+
+            }
+        } else {
+            res.status(401).json('You can only update your post');
         }
-        try {
-            const updatedUser = await User.findByIdAndUpdate(
-                req.params.id,
-                {
-                    $set: req.body,
-                },
-                { new: true }
-            );
-            res.status(200).json(updatedUser);
-        } catch (err) {
-            res.status(500).json(err);
-        }
-    } else {
-        res.status(401).json("You can update only your account!");
+    } catch (error) {
+        res.status(500).json(error);
     }
 });
 
