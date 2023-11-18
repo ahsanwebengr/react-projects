@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
 
     }
 });
+
 //UPDATE POST
 router.put("/:id", async (req, res) => {
     try {
@@ -79,16 +80,12 @@ router.get("/", async (req, res) => {
         let posts;
 
         if (username && catName) {
-            // If both username and catName are provided, filter by both
             posts = await Post.find({ username, categories: catName });
         } else if (username) {
-            // If only username is provided, filter by username
             posts = await Post.find({ username });
         } else if (catName) {
-            // If only catName is provided, filter by catName
             posts = await Post.find({ categories: catName });
         } else {
-            // If no parameters are provided, retrieve all posts
             posts = await Post.find();
         }
 
