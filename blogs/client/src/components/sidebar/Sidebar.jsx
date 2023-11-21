@@ -7,7 +7,7 @@ const Sidebar = () => {
             <div className="sidebarItem">
                 <span className="sidebarTitle">ABOUT ME</span>
                 <img
-                    src="https://themegoods-cdn-pzbycso8wng.stackpathdns.com/grandblog/demo/wp-content/uploads/2015/11/aboutme.jpg"
+                    src="https://media.istockphoto.com/id/1198931639/photo/writing-a-blog-blogger-influencer-reading-text-on-screen.jpg?b=1&s=612x612&w=0&k=20&c=_C4iNvLOzKbbfbeTMsJ4mQf8OGQwYWJ8GWKLKRglrF8="
                     alt=""
                 />
                 <p>
