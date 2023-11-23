@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             const resp = await axios.get('http://localhost:3000/api/posts');
-            console.log(resp);
+            setPosts(resp.data);
         };
 
         fetchData();
@@ -22,7 +22,7 @@ const Home = () => {
         <>
             <Header />
             <div className="home">
-                <Posts />
+                <Posts posts={posts} />
                 <Sidebar />
             </div>
         </>
