@@ -14,6 +14,7 @@ const Home = () => {
         const fetchData = async () => {
             const resp = await axios.get('http://localhost:3000/api/posts');
             setPosts(resp.data);
+            console.log(resp.data);
         };
 
         fetchData();

@@ -1,41 +1,27 @@
 import { Link } from "react-router-dom";
 import "./post.css";
 
-const Post = ({ img }) => {
+const Post = ({ post }) => {
     return (
         <div className="post">
             <img
                 className="postImg"
-                src={img}
-                alt=""
+                src={post?.img ? post.img : "https://images.unsplash.com/photo-1700675654221-d9c62be751c8?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                alt={post?.title}
             />
             <div className="postInfo">
                 <div className="postCats">
-                    <span className="postCat">
-                        <Link className="link" to="/posts?cat=Music">
-                            Music
-                        </Link>
-                    </span>
-                    <span className="postCat">
-                        <Link className="link" to="/posts?cat=Music">
-                            Life
-                        </Link>
-                    </span>
+                    {post?.categories.map((category, index) => (
+                        <span className="postCat" key={index}>{category.name}</span>
+                    ))}
                 </div>
                 <span className="postTitle">
-                    <Link to="/post/abc" className="link">
-                        Lorem ipsum dolor sit amet
-                    </Link>
+                    <Link to={`/post/${[post?._id]}`} className="link">{post?.title}</Link>
                 </span>
                 <hr />
-                <span className="postDate">1 hour ago</span>
+                <span className="postDate">{new Date(post?.createdAt).toDateString()}</span>
             </div>
-            <p className="postDesc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-                officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-                fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-                atque, exercitationem quibusdam, reiciendis odio laboriosam?
-            </p>
+            <p className="postDesc">{post?.desc}</p>
         </div>
     );
 };
