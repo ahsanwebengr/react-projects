@@ -7,10 +7,11 @@ const SinglePost = () => {
     const location = useLocation();
     const [post, setPost] = useState({});
     const id = location.pathname.split("/")[2];
+    console.log(id);
 
     useEffect(() => {
         const getPost = async () => {
-            const resp = await axios.get(`http://localhost:3000/posts/${id}`);
+            const resp = await axios.get(`http://localhost:3000/api/posts/${id}`);
             setPost(resp.data);
         };
         getPost();
