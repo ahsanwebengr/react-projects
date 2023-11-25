@@ -7,7 +7,6 @@ const SinglePost = () => {
     const location = useLocation();
     const [post, setPost] = useState({});
     const id = location.pathname.split("/")[2];
-    console.log(id);
 
     useEffect(() => {
         const getPost = async () => {
@@ -35,7 +34,7 @@ const SinglePost = () => {
                     <span>
                         Author:
                         <b className="singlePostAuthor">
-                            <Link className="link" to="/posts?username=Safak">
+                            <Link className="link" to={`/?user=${post.username}`}>
                                 {post?.username}
                             </Link>
                         </b>
