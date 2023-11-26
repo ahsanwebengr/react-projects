@@ -18,6 +18,10 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    max-width: 450px;
+    width: 100%;
 }
 
 .registerForm>label {
@@ -26,7 +30,7 @@
 
 .registerInput {
     padding: 10px;
-    background-color: white;
+    background-color: whitesmoke;
     border: none;
     border-radius: 10px;
 }
