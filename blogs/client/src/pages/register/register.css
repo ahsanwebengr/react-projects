@@ -61,3 +61,14 @@
     color: white;
     border-radius: 10px;
 }
+
+.errorMsg {
+    color: rgb(192, 11, 11);
+    background-color: rgba(230, 31, 31, 0.245);
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 3px;
+}

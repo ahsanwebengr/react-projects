@@ -3,8 +3,8 @@ import "./login.css";
 const Login = () => {
     return (
         <div className="login">
-            <span className="loginTitle">Login</span>
             <form className="loginForm">
+                <span className="loginTitle">Login</span>
                 <label>Email</label>
                 <input className="loginInput" type="text" placeholder="Enter your email..." />
                 <label>Password</label>

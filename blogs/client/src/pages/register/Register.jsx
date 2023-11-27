@@ -1,29 +1,31 @@
 import { useState } from "react";
 import "./register.css";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setError(false);
         try {
             const resp = await axios.post(`http://localhost:3000/api/auth/register`, {
                 username, email, password
             });
+            resp.data && navigate('/login');
         } catch (error) {
-            if (error.response && error.response.status === 409) {
-                alert("User already registered. Please use a different username or email.");
-            }
-            console.log(error);
+            setError(true);
         }
 
     };
     return (
         <div className="register">
+            {error && <p className="errorMsg">Something went wrong</p>}
             <form className="registerForm" onSubmit={handleSubmit}>
                 <span className="registerTitle">Register</span>
                 <label>Username</label>
