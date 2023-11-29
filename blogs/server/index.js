@@ -1,11 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const app = express();
 dotenv.config();
 
 app.use(express.json());
 app.use(cors());
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 
 const port = process.env.PORT || 3100;
 const str = process.env.MONGODB_URL;

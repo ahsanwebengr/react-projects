@@ -6,6 +6,7 @@ import axios from "axios";
 const SinglePost = () => {
     const location = useLocation();
     const [post, setPost] = useState({});
+    const PF = `localhost:3000/images`;
     const id = location.pathname.split("/")[2];
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const SinglePost = () => {
             <div className="singlePostWrapper">
                 <img
                     className="singlePostImg"
-                    src={post?.photo}
+                    src={PF + post?.photo}
                     alt={post?.title}
                 />
                 <h1 className="singlePostTitle">
