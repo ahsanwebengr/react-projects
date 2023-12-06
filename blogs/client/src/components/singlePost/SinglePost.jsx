@@ -7,15 +7,15 @@ import { Context } from "../../context/Context";
 const SinglePost = () => {
     const location = useLocation();
     const [post, setPost] = useState({});
-    const PF = `localhost:3000/images`;
+    const PF = `localhost:3000/images/`;
     const id = location.pathname.split("/")[2];
     const { user } = useContext(Context);
     const navigate = useNavigate();
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`localhost:3000/api/posts/${id}`);
-            navigate()
+            await axios.delete(`localhost:3000/api/posts/${post._id}`, { data: { username: user.username } });
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
@@ -54,7 +54,7 @@ const SinglePost = () => {
                             </Link>
                         </b>
                     </span>
-                    <span>{new Date(post?.createAt).toDateString()}</span>
+                    <span>{new Date(post?.createdAt).toDateString()}</span>
                 </div>
                 <p className="singlePostDesc">
                     {post?.desc}
