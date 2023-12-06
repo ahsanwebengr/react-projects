@@ -1,6 +1,5 @@
 .container {
-    width: 100%;
-    max-width: 65rem;
+    width: 65rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -11,7 +10,7 @@
 }
 
 .container hr {
-    height: 0.2rem;
+    height: 0.1rem;
     border: none;
     background: #707070;
 }
@@ -29,8 +28,8 @@
 .container ul li {
     display: flex;
     align-items: center;
-    height: 6.4rem;
-    padding-left: 1.5rem;
+    height: 6rem;
+    padding-left: 1.2rem;
     border: 1px solid #686868;
     border-radius: 0.8rem;
     font-size: 1.6rem;
