@@ -8,6 +8,8 @@ const Navbar = () => {
         { id: 2, label: 'About', path: '/about' },
         { id: 3, label: 'Project', path: '/project' },
         { id: 4, label: 'Contact', path: '/contact' },
+        { id: 5, label: 'Login', path: '/login' },
+        { id: 6, label: 'Register', path: '/register' },
     ];
 
     const pathname = usePathname();
@@ -15,7 +17,7 @@ const Navbar = () => {
     return (
         <nav className='bg-slate-200 py-4'>
             <div className="container max-w-6xl mx-auto flex justify-between items-center">
-                <Link href={'/'}>Logo</Link>
+                <Link className='text-blue-500 text-3xl font-semibold' href={'/'}>Next JS</Link>
                 <ul className='flex gap-3 items-center'>
                     {links.map((link) => (
                         <li key={link.id}>
