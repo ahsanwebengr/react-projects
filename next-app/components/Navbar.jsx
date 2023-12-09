@@ -18,7 +18,7 @@ const Navbar = () => {
         <nav className='bg-slate-200 py-4'>
             <div className="container max-w-6xl mx-auto flex justify-between items-center">
                 <Link className='text-blue-500 text-3xl font-semibold' href={'/'}>Next JS</Link>
-                <ul className='flex gap-3 items-center'>
+                <ul className=' gap-3 items-center hidden md:flex'>
                     {links.map((link) => (
                         <li key={link.id}>
                             <Link href={link.path} className={`${pathname === link.path && 'font-bold text-blue-500'}`}>{link.label}</Link>
