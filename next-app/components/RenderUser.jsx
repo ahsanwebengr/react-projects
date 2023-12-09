@@ -11,7 +11,7 @@ const RenderUser = () => {
             <h3 className='text-2xl font-semibold mb-3'>User List </h3>
 
             <div className="w-1/2">
-                {userData.length > 0 ? <>
+                {userData?.length > 0 ? <>
                     {
                         userData?.map((user) => (
                             <div key={user?.id} className="flex border justify-between items-center p-3 rounded-md mb-2">
