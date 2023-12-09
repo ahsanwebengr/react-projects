@@ -9,13 +9,17 @@ const AddUser = () => {
     const dispatch = useDispatch();
 
     const handleAddUser = () => {
-        dispatch(addUser(name));
-        setText('Added');
-        setName('');
+        if (name !== '') {
+            dispatch(addUser(name));
+            setText('Added');
+            setName('');
+            setTimeout(() => {
+                setText('Add User');
+            }, 500);
+        }else {
+            alert('Please enter something...');
+        }
 
-        setTimeout(() => {
-            setText('Add User');
-        }, 500);
     };
 
     return (

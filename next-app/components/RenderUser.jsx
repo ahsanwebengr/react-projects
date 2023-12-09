@@ -5,9 +5,6 @@ const RenderUser = () => {
     const userData = useSelector((data) => data.users);
     const dispatch = useDispatch();
 
-    const handleDeleteUser = () => {
-        dispatch(removeUser(user?.id));
-    };
 
     return (
         <div className='container max-w-6xl mx-auto my-6'>
@@ -19,7 +16,7 @@ const RenderUser = () => {
                         userData?.map((user) => (
                             <div key={user?.id} className="flex border justify-between items-center p-3 rounded-md mb-2">
                                 <h4>Username: <b>{user?.name}</b></h4>
-                                <button onClick={handleDeleteUser} className='bg-red-500 text-white px-3 py-1 rounded-md'>Delete</button>
+                                <button onClick={() => dispatch(removeUser(user?.id))} className='bg-red-500 text-white px-3 py-1 rounded-md'>Delete</button>
                             </div>
                         ))
                     }

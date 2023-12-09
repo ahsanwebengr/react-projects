@@ -13,7 +13,7 @@ const Slice = createSlice({
             state.users.push(data);
         },
         removeUser: (state, action) => {
-            const data = state.users.filter(user => user.id === action.payload);
+            const data = state.users.filter(user => user.id !== action.payload);
             state.users = data;
         }
     }
