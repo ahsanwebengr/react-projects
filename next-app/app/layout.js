@@ -3,6 +3,8 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Providers } from '@/redux/providers';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,11 +17,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
         <Providers>
-          {children}
+          <Suspense fallback={<Loading />}>
+            <Navbar />
+            {children}
+            <Footer />
+          </Suspense>
         </Providers>
-        <Footer />
       </body>
     </html>
   );
