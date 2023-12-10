@@ -8,6 +8,7 @@ const Navbar = () => {
         { id: 2, label: 'About', path: '/about' },
         { id: 3, label: 'Project', path: '/project' },
         { id: 4, label: 'Contact', path: '/contact' },
+        { id: 7, label: 'Users', path: '/users' },
         { id: 5, label: 'Login', path: '/login' },
         { id: 6, label: 'Register', path: '/register' },
     ];
