@@ -15,7 +15,19 @@ const RenderUser = () => {
                         userData?.map((user) => (
                             <div key={user?.id} className="flex border justify-between items-center p-3 rounded-md mb-2">
                                 <h4>Username: <b>{user?.name}</b></h4>
-                                <button onClick={() => dispatch(removeUser(user?.id))} className='bg-red-500 text-white px-3 py-1 rounded-md'>Delete</button>
+                                <button
+                                    onClick={() => {
+                                        const userConfirmed = window.confirm("Are you sure you want to delete?");
+                                        if (userConfirmed) {
+                                            dispatch(removeUser(user?.id));
+                                        } else {
+                                            alert("Deletion canceled by the user.");
+                                        }
+                                    }}
+                                    className='btn btn-error text-white'
+                                >
+                                    Delete
+                                </button>
                             </div>
                         ))
                     }

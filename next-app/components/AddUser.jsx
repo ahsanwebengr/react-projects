@@ -33,7 +33,7 @@ const AddUser = () => {
                     placeholder='Add new User'
                     className='pl-2 p-1 focus:outline-transparent flex-1'
                 />
-                <button onClick={handleAddUser} className='bg-blue-500 text-white px-3 rounded-md py-1'>
+                <button onClick={handleAddUser} className='btn btn-primary text-white'>
                     {text}
                 </button>
             </div>
