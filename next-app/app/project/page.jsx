@@ -9,14 +9,14 @@ const Project = () => {
         { id: 5, title: "Angular JS", description: "The web development framework for building the future" },
     ];
     return (
-        <section className="container max-w-6xl mx-auto py-6">
+        <section>
             <h2 className="text-4xl font-semibold mb-4">Project Page</h2>
             <div className="grid grid-cols-3 gap-5">
                 {projects?.map((project) => (
                     <div key={project?.id} className="flex flex-col items-center justify-center gap-2 p-3 shadow-lg rounded-md min-h-[230px] hover:shadow-xl">
                         <h4 className="font-medium text-2xl">{project?.title}</h4>
                         <p className="text-center p-2">{project?.description}</p>
-                        <Link className="p-2 bg-gray-500 hover:bg-gray-800 px-5 text-white text-center rounded-md" href={{ pathname: `project/${project.id}`, query: { title: project.title, desc: project.description } }}>View</Link>
+                        <Link className="btn btn-neutral" href={{ pathname: `project/${project.id}`, query: { title: project.title, desc: project.description } }}>View</Link>
                     </div>
                 ))}
             </div>

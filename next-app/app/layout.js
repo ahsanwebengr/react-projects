@@ -20,7 +20,9 @@ export default function RootLayout({ children }) {
         <Providers>
           <Suspense fallback={<Loading />}>
             <Navbar />
-            {children}
+            <main className='container mx-auto max-w-6xl py-8 min-h-screen'>
+              {children}
+            </main>
             <Footer />
           </Suspense>
         </Providers>

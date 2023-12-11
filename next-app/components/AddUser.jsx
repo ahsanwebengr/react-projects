@@ -1,6 +1,6 @@
 'use client';
 import { addUser } from '@/redux/slice';
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const AddUser = () => {
@@ -16,14 +16,14 @@ const AddUser = () => {
             setTimeout(() => {
                 setText('Add User');
             }, 500);
-        }else {
+        } else {
             alert('Please enter something...');
         }
 
     };
 
     return (
-        <div className='container max-w-6xl mx-auto my-6'>
+        <>
             <h3 className='text-2xl font-semibold mb-3'>Add new User </h3>
             <div className="bg-white shadow-md p-3 w-full md:w-1/2 flex gap-2">
                 <input
@@ -37,7 +37,7 @@ const AddUser = () => {
                     {text}
                 </button>
             </div>
-        </div>
+        </>
     );
 };
 

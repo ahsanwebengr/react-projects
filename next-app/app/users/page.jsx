@@ -9,23 +9,25 @@ const User = async () => {
     const users = await getData();
     return (
         <div>
-            <h1>All User</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Email</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users?.map((user) => {
-                        return <tr key={user?.id}>
-                            <td>{user?.name}</td>
-                            <td>{user?.email}</td>
-                        </tr>;
-                    })}
-                </tbody>
-            </table>
+            <h1 className="text-4xl font-semibold mb-4">All User</h1>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Email</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users?.map((user) => {
+                            return <tr className="hover" key={user?.id}>
+                                <td>{user?.name}</td>
+                                <td>{user?.email}</td>
+                            </tr>;
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
