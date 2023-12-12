@@ -14,13 +14,15 @@ const User = async () => {
                 <table className="table">
                     <thead>
                         <tr>
+                            <td>No.</td>
                             <td>Name</td>
                             <td>Email</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {users?.map((user) => {
+                        {users?.map((user, index) => {
                             return <tr className="hover" key={user?.id}>
+                                <td>{index+1}</td>
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
                             </tr>;

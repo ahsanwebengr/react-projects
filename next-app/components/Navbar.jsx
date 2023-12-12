@@ -16,8 +16,8 @@ const Navbar = () => {
     const pathname = usePathname();
 
     return (
-        <nav className='bg-slate-200 py-4'>
-            <div className="container max-w-6xl mx-auto flex justify-between items-center">
+        <nav className='bg-slate-200 py-4 sticky top-0 left-0 w-full z-20'>
+            <div className="container px-8 mx-auto flex justify-between items-center">
                 <Link className='text-blue-500 text-3xl font-semibold' href={'/'}>Next JS</Link>
                 <ul className=' gap-3 items-center hidden md:flex'>
                     {links.map((link) => (
