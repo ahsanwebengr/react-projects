@@ -22,12 +22,9 @@ const Navbar = () => {
                 <ul className=' gap-3 items-center hidden md:flex'>
                     {links.map((link) => (
                         <li key={link.id}>
-                            <Link
-                                href={link.path}
-                                className={`${pathname === link.path || pathname === `${link.path}/[id]` ? 'font-bold text-blue-500' : ''}`}
-                            >
-                                {link.label}
-                            </Link>
+                            <Link href={link.path}
+                                className={`${pathname === link.path && 'font-bold text-blue-500'}`}>
+                                {link.label}</Link>
                         </li>
                     ))}
                 </ul>
