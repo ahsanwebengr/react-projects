@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
     const links = [
         { id: 1, label: 'Home', path: '/' },
-        { id: 2, label: 'About', path: '/about' },
+        { id: 2, label: 'Products', path: '/products' },
         { id: 3, label: 'Project', path: '/project' },
         { id: 4, label: 'Contact', path: '/contact' },
         { id: 7, label: 'Users', path: '/users' },
@@ -16,14 +16,14 @@ const Navbar = () => {
     const pathname = usePathname();
 
     return (
-        <nav className='bg-slate-200 py-4 sticky top-0 left-0 w-full z-20'>
+        <nav className='bg-black/95 py-4 sticky top-0 left-0 w-full z-20'>
             <div className="container px-8 mx-auto flex justify-between items-center">
                 <Link className='text-blue-500 text-3xl font-semibold' href={'/'}>Next JS</Link>
                 <ul className=' gap-3 items-center hidden md:flex'>
                     {links.map((link) => (
                         <li key={link.id}>
                             <Link href={link.path}
-                                className={`${pathname === link.path && 'font-bold text-blue-500'}`}>
+                                className={`${pathname === link.path ? 'font-bold text-blue-500' : 'text-white'}`}>
                                 {link.label}</Link>
                         </li>
                     ))}
