@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { IoIosSearch } from "react-icons/io";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const App = () => {
   const [city, setCity] = useState('');
@@ -21,7 +23,7 @@ const App = () => {
         let FL = Math.round(data.main.feels_like);
 
         const weather = {
-          location: `Weather in ${data.name}`,
+          location: `${data.name}`,
           temperature: `Temperature : ${MT} C`,
           feelsLike: `Feels Like : ${FL} C`,
           humidity: `Humidity : ${data.main.humidity} %`,
@@ -43,23 +45,26 @@ const App = () => {
   useEffect(() => {
     getWeather();
   }, []);
+
   return (
     <div className='container'>
       <div className="search-input">
         <input type="text" placeholder='Search City' value={city} onChange={(e) => setCity(e.target.value)} />
-        <button onClick={getWeather}>
-          {isLoading ? 'Loading...' : 'Search'}
+        <button onClick={getWeather} className='search-btn'>
+          {isLoading ? <AiOutlineLoading3Quarters size={'22px'} className='rotate' /> : <IoIosSearch size={'22px'} />}
         </button>
       </div>
       <div className="weather-details">
-        {weatherInfo && <>
-          <h2>{weatherInfo.location}</h2>
+        {weatherInfo ? <>
+          <h2 className='location'>Weather in <span className='location-city'>{weatherInfo.location}</span>  </h2>
           <p>{weatherInfo.temperature}</p>
           <p>{weatherInfo.feelsLike}</p>
           <p>{weatherInfo.humidity}</p>
           <p>{weatherInfo.wind}</p>
           <p>{weatherInfo.condition}</p>
-        </>}
+        </>:
+        <h6 className='no-result'>No Result Found..</h6>
+        }
       </div>
 
     </div>
