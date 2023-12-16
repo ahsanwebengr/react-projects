@@ -1,11 +1,7 @@
-import Products from "@/components/Products";
-import { getData } from "@/helper";
-
-const page = async () => {
-    const products = await getData();
+const page = () => {
     return (
         <>
-            <Products products={products} />
+            <h1>Products Page</h1>
         </>
     );
 };
