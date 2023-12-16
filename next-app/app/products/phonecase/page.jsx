@@ -1,8 +1,9 @@
 import Products from "@/components/Products";
-import { getAccessories } from "@/helper";
+import { getPhoneCases } from "@/helper";
+
 
 const page = async () => {
-    const products = await getAccessories();
+    const products = await getPhoneCases();
     return (
         <>
             <Products products={products} />

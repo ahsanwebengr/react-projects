@@ -1,11 +1,11 @@
-import { getSinglePhone } from '@/helper';
+import { getSingleWatch } from '@/helper';
 import Image from 'next/image';
 import React from 'react';
 
 const SingleProduct = async ({ searchParams }) => {
     const _idString = searchParams?._id;
     const _id = Number(_idString);
-    const product = await getSinglePhone(_id);
+    const product = await getSingleWatch(_id);
     return (
         <div className='flex items-center gap-10 xl:gap-0 max-w-6xl '>
             <Image src={product?.image} alt={product?.title} width={500} height={500} />

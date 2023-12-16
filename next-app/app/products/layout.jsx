@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -6,13 +6,20 @@ const layout = ({ children }) => {
     const pathname = usePathname();
     return (
         <>
-            <ul className="inline-flex items-center gap-5 border p-3 rounded-md">
-                <li><Link className={`${pathname === '/products/phone' && 'border-b-2 border-b-blue-800 text-blue-950 font-bold'}`} href={'/products/phone'}>Phone</Link></li>
-                <li><Link className={`${pathname === '/products/phone-case' && 'border-b-2 border-b-blue-800 text-blue-950 font-bold'}`} href={'/products/phone-case'}>Phone Case</Link></li>
-                <li><Link className={`${pathname === '/products/watches' && 'border-b-2 border-b-blue-800 text-blue-950 font-bold'}`} href={'/products/watches'}>Watches</Link></li>
-                <li><Link className={`${pathname === '/products/accessories' && 'border-b-2 border-b-blue-800 text-blue-950 font-bold'}`} href={'/products/accessories'}>Accessories</Link></li>
-            </ul>
-            {children}
+            <div className="tabs tabs-boxed">
+                <Link className={`${pathname === '/products/phone' ? 'tab-active tab' : 'tab'}`} href={'/products/phone'}>Phone</Link>
+                <Link className={`${pathname === '/products/phonecase' ? 'tab-active tab' : 'tab'}`} href={'/products/phonecase'}>Phone Case</Link>
+                <Link className={`${pathname === '/products/watch' ? 'tab-active tab' : 'tab'}`} href={'/products/watch'}>Watch</Link>
+                <Link className={`${pathname === '/products/accessories' ? 'tab-active tab' : 'tab'}`} href={'/products/accessories'}>Accessories</Link>
+            </div>
+
+            {/* <div  className="">
+                <a  className="tab">Tab 1</a>
+                <a className="tab tab-active">Tab 2</a>
+                <a  className="tab">Tab 3</a>
+            </div> */}
+
+            <section className="py-8">{children}</section>
         </>
     );
 };
