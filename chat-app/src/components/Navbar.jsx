@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 export const Navbar = () => {
+    const navigate = useNavigate();
     const { currentUser, logout } = UserAuth();
 
     const handleLogOut = async () => {
         try {
             await logout();
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
