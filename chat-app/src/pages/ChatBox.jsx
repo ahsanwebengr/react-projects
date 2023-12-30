@@ -33,13 +33,15 @@ const ChatBox = () => {
     }, []);
 
     return (
-        <div className="pb-44 pt-20 mx-auto container max-w-4xl">
-            {messages.map((message) => (
-                <Message key={message.id} message={message} />
-            ))}
-            <div ref={messagesEndRef}></div>
-            <SendMessage/>
-        </div>
+        <section className='bg-base-200 min-h-[80vh]'>
+            <div className="pb-44 pt-20 mx-auto container max-w-4xl">
+                {messages.map((message) => (
+                    <Message key={message.id} message={message} />
+                ))}
+                <div ref={messagesEndRef}></div>
+                <SendMessage />
+            </div>
+        </section>
     );
 };
 

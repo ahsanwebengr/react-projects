@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
+import { UserAuth } from '../context/AuthContext';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig';
 
 const SendMessage = () => {
     const [message, setMessage] = useState('');
+    const { currentUser } = UserAuth();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
+    const handleSubmit = async (event) => {
         if (!message) {
             alert('Please enter message');
         }
+        event.preventDefault();
 
-        setMessage('');
+        try {
+            const { uid, displayName, photoURL } = currentUser;
+            await addDoc(collection(db, "messages"), {
+                text: message,
+                name: displayName,
+                avatar: photoURL,
+                createdAt: serverTimestamp(),
+                uid
+            });
+            setMessage('');
+        } catch (error) {
+            console.log(error);
+        }
+
     };
     return (
-        <div className='bg-gray-200 fixed left-0 bottom-0 w-full py-10 shadow-sm px-2'>
+        <div className='bg-gray-100 fixed left-0 bottom-0 w-full py-10 shadow-sm px-2'>
             <form onSubmit={handleSubmit} className='mx-auto container max-w-4xl flex'>
                 <input
                     type="text"
