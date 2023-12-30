@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -9,8 +10,10 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             await signInWithGoogle();
+            toast.success('Login in Google Successfully!');
         } catch (error) {
             console.log(error);
+            toast.error('Something went wrong!');
         }
     };
 
