@@ -32,7 +32,7 @@ const SendMessage = () => {
 
     };
     return (
-        <div className='bg-gray-100 fixed left-0 bottom-0 w-full py-10 shadow-sm px-2'>
+        <div className='bg-gray-100 fixed left-0 bottom-0 w-full py-6 shadow-md px-2'>
             <form onSubmit={handleSubmit} className='mx-auto container max-w-4xl flex'>
                 <input
                     type="text"

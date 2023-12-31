@@ -19,7 +19,6 @@ const Login = () => {
     useEffect(() => {
         if (currentUser) {
             navigate("/chat");
-            toast.success('Logged in Successfully!');
         }
     }, [currentUser]);
 
