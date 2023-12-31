@@ -10,7 +10,6 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             await signInWithGoogle();
-            toast.success('Login in Google Successfully!');
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong!');
@@ -20,6 +19,7 @@ const Login = () => {
     useEffect(() => {
         if (currentUser) {
             navigate("/chat");
+            toast.success('Logged in Successfully!');
         }
     }, [currentUser]);
 

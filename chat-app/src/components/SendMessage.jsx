@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
+import { toast } from 'react-toastify';
 
 const SendMessage = () => {
     const [message, setMessage] = useState('');
     const { currentUser } = UserAuth();
 
     const handleSubmit = async (event) => {
-        if (!message) {
-            alert('Please enter message');
-        }
         event.preventDefault();
+
+        if (message.trim() === "") {
+            toast.error("Enter valid message!");
+            return;
+        }
 
         try {
             const { uid, displayName, photoURL } = currentUser;
