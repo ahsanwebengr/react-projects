@@ -1,4 +1,4 @@
-import { UserModel } from "../models/Users";
+import { UserModel } from "../models/Users.js";
 
 export const index = async (req, res) => {
     try {
@@ -45,4 +45,31 @@ export const updateById = async (req, res) => {
         res.status(400).json(err);
     }
 };
+
+export const createUser = async (req, res) => {
+    try {
+        const user = await UserModel.create(req.body);
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+};
+
+
+export const deleteUser = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const userDelete = await UserModel.findByIdAndDelete(id);
+
+        if (userDelete) {
+            res.status(200).json(userDelete);
+        } else {
+            res.status(404).json({ message: "User not found" });
+        }
+    } catch (err) {
+        res.status(200).json(err);
+    }
+};
+
+
 

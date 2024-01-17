@@ -13,6 +13,9 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Age is required.']
     },
-});
+},
+    {
+        timestamps: true
+    });
 
 export const UserModel = mongoose.model('users', UserSchema);
