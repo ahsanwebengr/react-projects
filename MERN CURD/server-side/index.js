@@ -15,7 +15,6 @@ app.use(express.json());
 
 
 // mongo DB connection 
-
 mongoose.connect(dbStr, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -23,7 +22,6 @@ mongoose.connect(dbStr, {
 
 // Routes 
 app.use('/', user);
-
 
 // Server running 
 
