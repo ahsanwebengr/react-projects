@@ -37,10 +37,15 @@ export const updateById = async (req, res) => {
     try {
         const id = req.params.id;
         const updateFields = {
-            name: req.body.name,
+            userName: req.body.name,
             email: req.body.email,
             age: req.body.age
         };
+
+        if (updateFields.userName === '' || updateFields.email === '' || updateFields.age === '') {
+            console.log('All fields are required.');
+            return res.status(400).json({ message: 'All fields are required.' });
+        }
 
         const updatedUser = await UserModel.findByIdAndUpdate(id, updateFields, { new: true });
 
@@ -50,9 +55,10 @@ export const updateById = async (req, res) => {
             res.status(404).json({ message: "User not found" });
         }
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json(err);
     }
 };
+
 
 //=============> Create new User <========================
 export const createUser = async (req, res) => {
@@ -68,9 +74,10 @@ export const createUser = async (req, res) => {
             return res.status(400).json({ errors: validationErrors });
         } else if (err.code === 11000 && err.keyPattern && err.keyPattern.email) {
             return res.status(400).json({ errors: { email: 'Email already exist.' } });
+        } else {
+            res.status(500).json({ error: 'Internal Server Error' });
         }
 
-        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 

@@ -7,10 +7,11 @@ const UserCreate = () => {
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
     const navigate = useNavigate();
+    const baseURL = import.meta.env.VITE_BASE_URL;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/createUser', { name, email, age })
+        axios.post(`${baseURL}/createUser`, { name, email, age })
             .then((response) => {
                 if (response.status === 200) {
                     alert('Success');

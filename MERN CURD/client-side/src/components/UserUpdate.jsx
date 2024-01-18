@@ -8,10 +8,12 @@ const UserUpdate = () => {
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
     const navigate = useNavigate();
+    const baseURL = import.meta.env.VITE_BASE_URL;
+
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3001/updateUser/${id}`, { name, email, age })
+        axios.put(`${baseURL}/updateUser/${id}`, { name, email, age })
             .then((response) => {
                 if (response.status === 200) {
                     alert('Success');
@@ -26,7 +28,7 @@ const UserUpdate = () => {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/getUser/${id}`)
+        axios.get(`${baseURL}/getUser/${id}`)
             .then((response) => {
                 setName(response?.data?.name);
                 setEmail(response?.data?.email);

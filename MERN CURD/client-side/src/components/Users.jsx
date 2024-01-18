@@ -4,18 +4,23 @@ import { Link } from "react-router-dom";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const baseURL = import.meta.env.VITE_BASE_URL;
+
+    const getUsers = async () => {
+        await axios.get(`${baseURL}`)
+            .then((response) => setUsers(response.data.data))
+            .catch((error) => console.log(error));
+    };
 
     useEffect(() => {
-        axios.get('http://localhost:3001')
-            .then((response) => setUsers(response.data))
-            .catch((error) => console.log(error));
+        getUsers();
     }, []);
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:3001/deleteUser/${id}`)
+        axios.delete(`${baseURL}/deleteUser/${id}`)
             .then((response) => {
                 console.log(response.data);
-                window.location.reload();
+                getUsers();
                 alert('User deleted successfully');
             })
             .catch((error) => console.log(error));
@@ -36,7 +41,7 @@ const Users = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user) => {
+                                {users?.map((user) => {
                                     const { name, email, age, _id } = user;
                                     return <tr key={_id}>
                                         <td>{name}</td>
