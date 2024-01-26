@@ -1,30 +1,29 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { deleteUser, getAllUsers } from "../redux/features/user.slice";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-    const baseURL = import.meta.env.VITE_BASE_URL;
+    const dispatch = useDispatch();
 
-    const getUsers = async () => {
-        await axios.get(`${baseURL}`)
-            .then((response) => setUsers(response.data.data))
-            .catch((error) => console.log(error));
+    const moveRouter = (response) => {
+        const getUsers = response?.data;
+        setUsers(getUsers);
+    };
+
+    const successCallBack = () => {
+        dispatch(getAllUsers({ successCallBack: moveRouter }));
     };
 
     useEffect(() => {
-        getUsers();
-    }, []);
+        dispatch(getAllUsers({ successCallBack: moveRouter }));
+    }, [dispatch]);
 
     const handleDelete = (id) => {
-        axios.delete(`${baseURL}/deleteUser/${id}`)
-            .then((response) => {
-                console.log(response.data);
-                getUsers();
-                alert('User deleted successfully');
-            })
-            .catch((error) => console.log(error));
+        dispatch(deleteUser({ id, successCallBack }));
     };
+
     return (
         <div className="vh-100 d-flex align-items-center justify-content-center bg-primary">
             <div className="row w-100 justify-content-center">
@@ -41,24 +40,34 @@ const Users = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users?.map((user) => {
-                                    const { name, email, age, _id } = user;
-                                    return <tr key={_id}>
-                                        <td>{name}</td>
-                                        <td>{email}</td>
-                                        <td>{age}</td>
-                                        <td>
-                                            <Link to={`update/${_id}`} className="btn btn-warning me-2">Edit</Link>
-                                            <button className="btn btn-danger" onClick={() => handleDelete(_id)}>Delete</button>
+                                {users.length > 0 ? (
+                                    users?.map((user) => {
+                                        const { name, email, age, _id } = user;
+                                        return (
+                                            <tr key={_id}>
+                                                <td>{name}</td>
+                                                <td>{email}</td>
+                                                <td>{age}</td>
+                                                <td>
+                                                    <Link to={`update/${_id}`} className="btn btn-warning me-2">Edit</Link>
+                                                    <button className="btn btn-danger" onClick={() => handleDelete(_id)}>Delete</button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                ) : (
+                                    <tr>
+                                        <td colSpan="4" className="text-center">
+                                            No Record found...
                                         </td>
-                                    </tr>;
-                                })}
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

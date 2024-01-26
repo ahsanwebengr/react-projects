@@ -1,6 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { updateUser, getSingleUser } from "../redux/features/user.slice";
 
 const UserUpdate = () => {
     const { id } = useParams();
@@ -8,34 +9,34 @@ const UserUpdate = () => {
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
     const navigate = useNavigate();
-    const baseURL = import.meta.env.VITE_BASE_URL;
+    const dispatch = useDispatch();
 
-
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault();
-        axios.put(`${baseURL}/updateUser/${id}`, { name, email, age })
-            .then((response) => {
-                if (response.status === 200) {
-                    alert('Success');
-                    navigate('/');
-                    console.log(response.data);
-                } else {
-                    alert('Error');
-                }
-            }).catch((error) => {
-                console.log(error);
-            });
+
+        const userData = {
+            name,
+            email,
+            age,
+        };
+
+        try {
+            await dispatch(updateUser({ id, payload: userData, successCallBack: () => navigate('/') }));
+        } catch (error) {
+            console.error('Update user failed:', error);
+        }
     };
 
     useEffect(() => {
-        axios.get(`${baseURL}/getUser/${id}`)
-            .then((response) => {
-                setName(response?.data?.name);
-                setEmail(response?.data?.email);
-                setAge(response?.data?.age);
-            })
-            .catch((error) => console.log(error));
+        const moveRouter = (res) => {
+            setName(res?.user?.name);
+            setEmail(res?.user?.email);
+            setAge(res?.user?.age);
+        };
+        dispatch(getSingleUser({ id, successCallBack: moveRouter }));
+
     }, []);
+
 
 
     return (

@@ -1,28 +1,29 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { createUser } from "../redux/features/user.slice";
 
 const UserCreate = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
     const navigate = useNavigate();
-    const baseURL = import.meta.env.VITE_BASE_URL;
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`${baseURL}/createUser`, { name, email, age })
-            .then((response) => {
-                if (response.status === 200) {
-                    alert('Success');
-                    navigate('/');
-                    console.log(response.data);
-                } else {
-                    alert('Error');
-                }
-            }).catch((error) => {
-                console.log(error);
-            });
+
+        const payload = {
+            name, email, age
+        };
+
+        dispatch(createUser({ payload, successCallBack: moveRouter }));
+    };
+
+    const moveRouter = (response) => {
+        if (response.status) {
+            navigate('/');
+        }
     };
 
     return (
