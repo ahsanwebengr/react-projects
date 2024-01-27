@@ -11,7 +11,8 @@ const App = () => {
         {colors.map((btnColor, index) => (
           <button
             key={index}
-            className={`text-white py-2 px-8 bg-${btnColor}-500 shadow-md rounded-full capitalize`}
+            className={`text-white py-2 px-8 shadow-md rounded-full capitalize`}
+            style={{ backgroundColor: btnColor }}
             onClick={() => setColor(btnColor)}
             title={btnColor}
           >
