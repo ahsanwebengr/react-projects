@@ -48,32 +48,40 @@ const Board = ({ title }) => {
             </div>
 
             {/* Cards  */}
+            <div className="max-h-96 overflow-auto scrollbar px-1">
+                {
+                    data?.map((card) => (
+                        <Card taskDsc={card?.desc} badge={card?.badge} key={card?.id} badgeLabels={card?.badgeLabels} />
+                    ))
+                }
+            </div>
 
             {
-                data?.map((card) => (
-                    <Card taskDsc={card?.desc} badge={card?.badge} key={card?.id} badgeLabels={card?.badgeLabels} />
-                ))
+                title === 'Todo' && (
+                    <>
+                        {isAddingCard ? (
+                            <form className="flex items-center flex-col justify-between mt-4">
+                                <textarea
+                                    value={newCardDescription}
+                                    onChange={(e) => setNewCardDescription(e.target.value)}
+                                    placeholder="Enter card description..."
+                                    required="required"
+                                    className="w-full p-1 bg-gray-200 text-black rounded-md shadow-xl focus:outline-none mb-2"
+                                />
+                                <div className="flex gap-4">
+                                    <button type="submit" onClick={handleAddCard} className="text-primary">Add Card</button>
+                                    <button onClick={handleCancelAddCard} className="text-error">Cancel</button>
+                                </div>
+                            </form>
+                        ) : (
+                            <div className="flex items-center justify-between p-3 mt-4">
+                                <h5 className="flex gap-2 items-center cursor-pointer" onClick={handleAddCardClick}><FaPlus /> Add a card</h5>
+                                <FaImages size={26} className="cursor-pointer" />
+                            </div>
+                        )}
+                    </>
+                )
             }
-
-            {isAddingCard ? (
-                <div className="flex items-center flex-col justify-between mt-4">
-                    <textarea
-                        value={newCardDescription}
-                        onChange={(e) => setNewCardDescription(e.target.value)}
-                        placeholder="Enter card description..."
-                        className="w-full p-1 bg-gray-200 text-black rounded-md shadow-xl focus:outline-none mb-2"
-                    />
-                    <div className="flex gap-4">
-                        <button onClick={handleAddCard} className="text-primary">Add Card</button>
-                        <button onClick={handleCancelAddCard} className="text-error">Cancel</button>
-                    </div>
-                </div>
-            ) : (
-                <div className="flex items-center justify-between p-3 mt-4">
-                    <h5 className="flex gap-2 items-center cursor-pointer" onClick={handleAddCardClick}><FaPlus /> Add a card</h5>
-                    <FaImages size={26} className="cursor-pointer" />
-                </div>
-            )}
         </article>
     );
 };
