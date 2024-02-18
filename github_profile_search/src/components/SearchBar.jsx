@@ -1,7 +1,8 @@
 const SearchBar = ({ searchProps }) => {
-    const { search, setSearch } = searchProps;
+    const { search, setSearch, handleSubmit } = searchProps;
+
     return (
-        <form className="max-w-xl w-full mx-auto py-4">
+        <form onSubmit={handleSubmit} className="w-full mx-auto py-4">
             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
