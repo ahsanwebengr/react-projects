@@ -1,19 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// export const api = createApi({
-//     baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/recipes' }),
-//     endpoints: (builder) => ({
-//         getData: builder.query({
-//             query: () => 'data',
-//         }),
-//     }),
-// });
-
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com/recipes' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://dummyjson.com' }),
+    endpoints: (builder) => ({
+        getRecipes: builder.query({
+            query: () => 'recipes',
+        }),
+    }),
 });
 
-export const { useBaseQuery } = api;
+export const { useGetRecipesQuery } = api;
 
-
-export const { useGetDataQuery } = api;
