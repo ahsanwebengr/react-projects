@@ -1,5 +1,5 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Recipe from './components/Recipe';
 import NotFound from './pages/NotFound';
 import RecipeDetails from './pages/RecipeDetails';
