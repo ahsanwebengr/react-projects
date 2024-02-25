@@ -1,4 +1,3 @@
-import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Recipe from './components/Recipe';
 import NotFound from './pages/NotFound';
@@ -22,9 +21,9 @@ function App() {
     ]);
 
     return (
-        <>
+        <div className='container max-w-screen-xl mx-auto px-2'>
             <RouterProvider router={router} />
-        </>
+        </div>
     );
 }
 
