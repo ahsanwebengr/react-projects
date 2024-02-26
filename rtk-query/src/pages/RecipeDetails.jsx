@@ -14,7 +14,7 @@ const RecipeDetails = () => {
     return (
         <div>
             {currentRecipe ? (
-                <section>
+                <section className='py-3'>
                     <div className="my-5">
                         <Link className='btn btn-primary btn-circle' to={'/'}><MoveLeft /></Link>
                     </div>
