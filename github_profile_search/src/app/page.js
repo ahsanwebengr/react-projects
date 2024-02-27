@@ -14,9 +14,7 @@ const Page = () => {
             const resp = await axios.get(`https://api.github.com/users/${search}`);
             setUsers(resp.data);
             setErrorMessage(null);
-            console.log(resp.data);
         } catch (error) {
-            console.log(error);
             if (error.response.status === 404) {
                 setErrorMessage(error.response.data.message);
             } else {
@@ -32,7 +30,7 @@ const Page = () => {
     };
 
     useEffect(() => {
-        console.log(users, 'updated users');
+        // console.log(users, 'users');
     }, [users]);
 
     return (
