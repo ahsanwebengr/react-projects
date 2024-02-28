@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useGetRecipesQuery } from '../rtk/Api';
 import { MoveLeft } from 'lucide-react';
+import TimeSpend from '../components/TimeSpend';
 
 const RecipeDetails = () => {
     const { data } = useGetRecipesQuery();
@@ -31,7 +32,7 @@ const RecipeDetails = () => {
                         ))}</div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3  mb-4">
                         <div className="my-3">
                             <h4 className='font-semibold text-3xl my-3'>Ingredients to Use</h4>
                             <ul className='marker:text-blue-500 list-outside list-disc ml-8'>
@@ -48,7 +49,7 @@ const RecipeDetails = () => {
                                 {
                                     currentRecipe?.instructions?.map((instruction, index) => (
                                         <>
-                                            <li className='font-semibold text-2xl mb-1'> Step {index + 1}</li>
+                                            <li className='font-semibold text-2xl mb-1'> Step - {index + 1}</li>
                                             <li key={index} className='mb-2 capitalize text-lg'>{instruction}</li>
                                         </>
                                     ))
@@ -57,23 +58,11 @@ const RecipeDetails = () => {
                         </div>
                     </div>
 
-                    <div className='shadow-md bg-white dark:bg-slate-800 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-3 p-4'>
-                        <div className="flex flex-col items-center gap-3">
-                            <h5 className='text-xl font-semibold'>Prep Time</h5>
-                            <p className='text-lg'>{currentRecipe?.prepTimeMinutes}</p>
-                        </div>
-                        <div className="flex flex-col items-center gap-3">
-                            <h5 className='text-xl font-semibold'>Prep Time</h5>
-                            <p className='text-lg'>{currentRecipe?.cookTimeMinutes}</p>
-                        </div>
-                        <div className="flex flex-col items-center gap-3">
-                            <h5 className='text-xl font-semibold'>Total Time</h5>
-                            <p className='text-lg'>{currentRecipe?.prepTimeMinutes + currentRecipe?.cookTimeMinutes}</p>
-                        </div>
-                        <div className="flex flex-col items-center gap-3">
-                            <h5 className='text-xl font-semibold'>Servings</h5>
-                            <p className='text-lg'>{currentRecipe?.servings}</p>
-                        </div>
+                    <div className='shadow-md bg-gray-100 dark:bg-slate-800 rounded-lg grid grid-cols-2 md:grid-cols-4 gap-3 p-4'>
+                        <TimeSpend title={'Prep Time'} value={currentRecipe?.prepTimeMinutes} />
+                        <TimeSpend title={'Cook Time'} value={currentRecipe?.cookTimeMinutes} />
+                        <TimeSpend title={'Total Time'} value={currentRecipe?.prepTimeMinutes + currentRecipe?.cookTimeMinutes} />
+                        <TimeSpend title={'Servings'} value={currentRecipe?.servings} />
                     </div>
                 </section>
             ) : (
