@@ -17,7 +17,7 @@ const Recipe = () => {
         return () => clearTimeout(timerId);
     }, [searchTerm, refetch]);
 
-    const filteredRecipes = data?.recipes?.filter(recipe =>
+    let filteredRecipes = data?.recipes?.filter(recipe =>
         recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -29,11 +29,11 @@ const Recipe = () => {
 
             {error && <p>Something went wrong... ❌</p>}
 
-            {filteredRecipes && filteredRecipes.length === 0 && (
+            {filteredRecipes?.length === 0 && (
                 <p>No recipes found for the search term: <strong>{searchTerm}</strong></p>
             )}
 
-            {filteredRecipes && filteredRecipes.length > 0 && (
+            {filteredRecipes?.length > 0 && (
                 <>
                     <h2 className='text-start text-3xl md:text-5xl font-bold mb-4'>Delicious Recipes</h2>
                     <p className='text-start max-w-3xl'>Find and share everyday cooking inspiration on All recipes. Discover recipes, cooks, videos, and how-tos based on the food you love and the friends you follow.</p>
