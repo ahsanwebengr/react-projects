@@ -1,9 +1,9 @@
 import { Pencil, Trash2 } from 'lucide-react';
-import { useAddTodosQuery } from '../rtk/Api';
+import { useGetTodosQuery } from '../rtk/Api';
 import { v4 as uuidv4 } from 'uuid';
 
 const TodosList = () => {
-  const { data, error, isLoading } = useAddTodosQuery();
+  const { data, error, isLoading } = useGetTodosQuery();
 
   return (
     <>
