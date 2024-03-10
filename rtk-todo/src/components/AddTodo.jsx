@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePostTodosMutation } from '../rtk/Api';
 import { Input, Button, TextArea } from './index';
 
@@ -6,6 +6,7 @@ const AddTodo = () => {
   const [value, setValue] = useState({
     title: '',
     description: '',
+    isCompleted: false,
   });
 
   const [postTodos, { isLoading }] = usePostTodosMutation();

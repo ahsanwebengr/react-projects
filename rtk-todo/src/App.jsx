@@ -1,11 +1,11 @@
 import { AddTodo, TodosList } from './components';
 const App = () => {
   return (
-    <div className='container min-h-screen flex items-center justify-center'>
-      <div className='max-w-screen-sm w-full  flex flex-col'>
+    <div className='container min-h-screen flex flex-col items-center justify-center w-full max-w-screen-2xl'>
+      <div className='max-w-screen-sm w-full flex flex-col'>
         <AddTodo />
-        <TodosList />
       </div>
+      <TodosList />
     </div>
   );
 };

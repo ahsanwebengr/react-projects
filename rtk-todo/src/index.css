@@ -7,3 +7,7 @@
         font-family: "Proxima Nova", system-ui, sans-serif;
     }
 }
+
+h2 {
+    @apply text-2xl font-semibold tracking-wide leading-8 text-center
+}

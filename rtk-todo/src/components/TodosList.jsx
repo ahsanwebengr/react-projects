@@ -1,45 +1,63 @@
 import { Pencil, Trash2 } from 'lucide-react';
 import { useGetTodosQuery } from '../rtk/Api';
-import { v4 as uuidv4 } from 'uuid';
+import { useDeleteTodoMutation } from '../rtk/Api';
+import { dateFormat } from '../utils/dateFormatter';
 
 const TodosList = () => {
-  const { data, error, isLoading } = useGetTodosQuery();
+  const [deleteTodo] = useDeleteTodoMutation();
+  const { data: todos = [], isLoading, isError, error } = useGetTodosQuery();
+
+  const handleDeleteTodo = async id => {
+    try {
+      await deleteTodo({ id });
+    } catch (error) {
+      console.error('Error deleting todo:', error);
+    }
+  };
 
   return (
     <>
-      {isLoading && <h1>Loading...⌛</h1>}
-      {error && <h1>Something went Wrong 👎</h1>}
-      {!isLoading && data?.data.length > 0 ? (
-        <ul className='bg-white divide-y rounded-lg'>
-          {data?.data?.map(todo => (
-            <li key={todo?.id} className='p-2 flex justify-between items-center'>
+      {isLoading && <h2>Loading...⌛</h2>}
+      {isError && <h2>{error.status} 👎</h2>}
+      {!isLoading && todos?.data.length > 0 ? (
+        <section className='w-full grid grid-cols-4 gap-3'>
+          {todos?.data?.map(todo => (
+            <article
+              key={todo?._id}
+              className='card bg-white p-2 min-h-40 justify-center gap-3'
+            >
               <div className='space-x-2'>
                 <input
                   type='checkbox'
                   name='isComplete'
-                  id={todo.id}
+                  id={todo?._id}
                   className='accent-blue-500 cursor-pointer'
                 />
                 <label
-                  htmlFor={todo.id}
-                  className='text-lg text-slate-800 tracking-wide font-medium cursor-pointer'
+                  htmlFor={todo?._id}
+                  className='text-xl truncate text-slate-800 tracking-wide font-medium cursor-pointer'
                 >
                   {todo?.title}
                 </label>
               </div>
-              <div className='flex gap-2'>
+              <p className='line-clamp-3 text-lg'>{todo?.description}</p>
+              <small>{dateFormat(todo?.createdAt)}</small>
+              <div className='flex gap-2 justify-end'>
                 <div className='btn-circle text-blue-400 hover:bg-blue-400 hover:text-white bg-blue-100 flex items-center justify-center cursor-pointer size-10'>
                   <Pencil size={16} />
                 </div>
-                <div className='btn-circle text-red-400 hover:bg-red-400 hover:text-white bg-red-100 flex items-center justify-center cursor-pointer size-10'>
+                <div
+                  onClick={() => handleDeleteTodo(todo?._id)}
+                  className='btn-circle text-red-400 hover:bg-red-400 hover:text-white bg-red-100 flex items-center justify-center cursor-pointer size-10'
+                >
                   <Trash2 size={16} />
                 </div>
               </div>
-            </li>
+            </article>
           ))}
-        </ul>
+        </section>
       ) : (
-        <h1>List is Empty 📄</h1>
+        !isLoading && <h2>List is Empty 📄</h2>
       )}
     </>
   );

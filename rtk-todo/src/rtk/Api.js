@@ -5,17 +5,16 @@ export const api = createApi({
     baseUrl: 'https://api.freeapi.app/api/v1/',
   }),
 
-  endpoints: builder => ({
-    getTodos: builder.query({
+  endpoints: build => ({
+    getTodos: build.query({
       query: () => {
         return {
           url: 'todos',
           method: 'GET',
-          // !   params, USE: if params is required
         };
       },
     }),
-    postTodos: builder.mutation({
+    postTodos: build.mutation({
       query: ({ data }) => {
         return {
           url: 'todos',
@@ -24,7 +23,15 @@ export const api = createApi({
         };
       },
     }),
+    deleteTodo: build.mutation({
+      query({ id }) {
+        return {
+          url: `todos/${id}`,
+          method: 'DELETE',
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetTodosQuery, usePostTodosMutation } = api;
+export const { useGetTodosQuery, usePostTodosMutation, useDeleteTodoMutation } = api;
