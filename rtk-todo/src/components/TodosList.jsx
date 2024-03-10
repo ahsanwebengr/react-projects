@@ -1,17 +1,22 @@
+import { useDeleteTodoMutation, useGetTodosQuery } from '../rtk/services/Api';
 import { Pencil, Trash2 } from 'lucide-react';
-import { useGetTodosQuery } from '../rtk/Api';
-import { useDeleteTodoMutation } from '../rtk/Api';
 import { dateFormat } from '../utils/dateFormatter';
+import toast from 'react-hot-toast';
 
 const TodosList = () => {
   const [deleteTodo] = useDeleteTodoMutation();
-  const { data: todos = [], isLoading, isError, error } = useGetTodosQuery();
+  const { data: todos = [], isLoading, isError, error, refetch } = useGetTodosQuery();
 
   const handleDeleteTodo = async id => {
     try {
-      await deleteTodo({ id });
+      const res = await deleteTodo({ id });
+
+      res?.data?.message ? toast.success(res.data.message) : null;
+      refetch();
+      return res;
     } catch (error) {
-      console.error('Error deleting todo:', error);
+      console.log('Error deleting todo:', error);
+      toast.error('An error occurred while deleting the todo.');
     }
   };
 
