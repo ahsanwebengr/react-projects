@@ -35,6 +35,7 @@ const Modal = ({ modalData, isOpen, setIsOpen }) => {
       return res;
     } catch (error) {
       console.error('Error updating todo:', error);
+      toast.error('An error occurred while updating the todo.');
     }
   };
   return (
@@ -74,7 +75,7 @@ const Modal = ({ modalData, isOpen, setIsOpen }) => {
                 </div>
               </div>
               <Button type={'submit'} color={'text-white'}>
-                Update
+                {isLoading ? 'Upating...' : 'Update'}
               </Button>
             </form>
           </div>
