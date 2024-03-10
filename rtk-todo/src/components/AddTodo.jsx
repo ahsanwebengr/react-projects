@@ -50,12 +50,14 @@ const AddTodo = () => {
           value={value?.title}
           name={'title'}
           onChange={handleChange}
+          required={true}
         />
         <TextArea
           placeholder={'Enter Description'}
           value={value.description}
           onChange={handleChange}
           name={'description'}
+          required={true}
         />
         <Button type={'submit'} color={'text-white'} disabled={isLoading}>
           {isLoading ? 'Adding...' : 'Add'}

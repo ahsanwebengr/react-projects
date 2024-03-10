@@ -31,7 +31,21 @@ export const api = createApi({
         };
       },
     }),
+    editTodo: build.mutation({
+      query({ id, data }) {
+        return {
+          url: `todos/${id}`,
+          method: 'PATCH',
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetTodosQuery, usePostTodosMutation, useDeleteTodoMutation } = api;
+export const {
+  useGetTodosQuery,
+  usePostTodosMutation,
+  useDeleteTodoMutation,
+  useEditTodoMutation,
+} = api;

@@ -1,5 +1,5 @@
 import { useGetTodosQuery } from '../rtk/services/Api';
-import TodoCard from './TodoCard';
+import { TodoCard } from './index';
 
 const TodosList = () => {
   const { data: todos = [], isLoading, isError, error } = useGetTodosQuery();

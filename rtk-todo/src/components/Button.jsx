@@ -12,7 +12,7 @@ const Button = ({
   return (
     <>
       <button
-        className={`${btnClasses} ${bgColor} ${color} ${className}`}
+        className={`${className} ${btnClasses} ${color} ${bgColor}`}
         type={type}
         onClick={onClick}
       >

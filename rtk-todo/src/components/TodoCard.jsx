@@ -2,10 +2,14 @@ import { useDeleteTodoMutation, useGetTodosQuery } from '../rtk/services/Api';
 import { Pencil, Trash2 } from 'lucide-react';
 import { dateFormat } from '../utils/dateFormatter';
 import toast from 'react-hot-toast';
+import { useState } from 'react';
+import { Modal } from './index';
 
 const TodoCard = ({ todos }) => {
   const [deleteTodo] = useDeleteTodoMutation();
   const { refetch } = useGetTodosQuery();
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   const handleDeleteTodo = async id => {
     try {
@@ -18,6 +22,11 @@ const TodoCard = ({ todos }) => {
       console.log('Error deleting todo:', error);
       toast.error('An error occurred while deleting the todo.');
     }
+  };
+
+  const handleEditTodo = todo => {
+    setIsOpen(!isOpen);
+    setModalData(todo);
   };
   return (
     <>
@@ -43,8 +52,12 @@ const TodoCard = ({ todos }) => {
             </div>
             <p className='line-clamp-3 text-lg'>{todo?.description}</p>
             <small>{dateFormat(todo?.createdAt)}</small>
+
             <div className='flex gap-2 justify-end'>
-              <div className='btn-circle text-blue-400 hover:bg-blue-400 hover:text-white bg-blue-100 flex items-center justify-center cursor-pointer size-10'>
+              <div
+                onClick={() => handleEditTodo(todo)}
+                className='btn-circle text-blue-400 hover:bg-blue-400 hover:text-white bg-blue-100 flex items-center justify-center cursor-pointer size-10'
+              >
                 <Pencil size={16} />
               </div>
               <div
@@ -57,6 +70,8 @@ const TodoCard = ({ todos }) => {
           </article>
         ))}
       </section>
+
+      {isOpen && <Modal modalData={modalData} setIsOpen={setIsOpen} isOpen={isOpen} />}
     </>
   );
 };
