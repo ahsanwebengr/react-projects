@@ -74,7 +74,7 @@ const Modal = ({ modalData, isOpen, setIsOpen }) => {
                   />
                 </div>
               </div>
-              <Button type={'submit'} color={'text-white'}>
+              <Button type={'submit'} color={'text-white'} disabled={isLoading}>
                 {isLoading ? 'Upating...' : 'Update'}
               </Button>
             </form>

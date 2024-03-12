@@ -3,7 +3,7 @@ import { Pencil, Trash2 } from 'lucide-react';
 import { dateFormat } from '../utils/dateFormatter';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
-import { Modal } from './index';
+import { Badge, Modal } from './index';
 
 const TodoCard = ({ todos }) => {
   const [deleteTodo] = useDeleteTodoMutation();
@@ -36,19 +36,16 @@ const TodoCard = ({ todos }) => {
             key={todo?._id}
             className='card bg-white p-2 min-h-40 justify-center gap-3'
           >
-            <div className='space-x-2'>
-              <input
-                type='checkbox'
-                name='isComplete'
-                id={todo?._id}
-                className='accent-blue-500 cursor-pointer'
-              />
+            <div className='flex justify-between items-center'>
               <label
                 htmlFor={todo?._id}
-                className='text-xl truncate text-slate-800 tracking-wide font-medium cursor-pointer'
+                className='text-xl truncate text-slate-800 tracking-wide font-medium'
               >
                 {todo?.title}
               </label>
+              <Badge color={'text-yellow-400'} bgColor={'bg-yellow-50'}>
+                Pending
+              </Badge>
             </div>
             <p className='line-clamp-3 text-lg'>{todo?.description}</p>
             <small>{dateFormat(todo?.createdAt)}</small>
