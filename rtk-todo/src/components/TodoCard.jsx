@@ -43,14 +43,16 @@ const TodoCard = ({ todos }) => {
               >
                 {todo?.title}
               </label>
-              <Badge color={'text-yellow-400'} bgColor={'bg-yellow-50'}>
-                Pending
+              <Badge
+                color={todo?.isComplete ? 'text-green-400' : 'text-yellow-400'} 
+                bgColor={todo?.isComplete ? 'bg-green-400' : 'bg-yellow-400'}>
+                {todo?.isComplete ? 'Completed':'Pending'}
               </Badge>
             </div>
             <p className='line-clamp-3 text-lg'>{todo?.description}</p>
             <small>{dateFormat(todo?.createdAt)}</small>
 
-            <div className='flex gap-2 justify-end'>
+            <div className='flex gap-2 items-center justify-end'>
               <div
                 onClick={() => handleEditTodo(todo)}
                 className='btn-circle text-blue-400 hover:bg-blue-400 hover:text-white bg-blue-100 flex items-center justify-center cursor-pointer size-10'
@@ -66,9 +68,10 @@ const TodoCard = ({ todos }) => {
             </div>
           </article>
         ))}
-      </section>
+    </section >
 
-      {isOpen && <Modal modalData={modalData} setIsOpen={setIsOpen} isOpen={isOpen} />}
+      { isOpen && <Modal modalData={modalData} setIsOpen={setIsOpen} isOpen={isOpen} />
+}
     </>
   );
 };
