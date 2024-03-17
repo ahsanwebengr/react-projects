@@ -27,6 +27,7 @@ const TodoCard = ({ todos }) => {
   const handleEditTodo = todo => {
     setIsOpen(!isOpen);
     setModalData(todo);
+    console.log(todo?.isComplete);
   };
   return (
     <>
@@ -44,9 +45,10 @@ const TodoCard = ({ todos }) => {
                 {todo?.title}
               </label>
               <Badge
-                color={todo?.isComplete ? 'text-green-400' : 'text-yellow-400'} 
-                bgColor={todo?.isComplete ? 'bg-green-400' : 'bg-yellow-400'}>
-                {todo?.isComplete ? 'Completed':'Pending'}
+                color={todo?.isComplete ? 'text-green-400' : 'text-yellow-400'}
+                bgColor={todo?.isComplete ? 'bg-green-50' : 'bg-yellow-50'}
+              >
+                {todo?.isComplete ? 'Completed' : 'Pending'}
               </Badge>
             </div>
             <p className='line-clamp-3 text-lg'>{todo?.description}</p>
@@ -68,10 +70,9 @@ const TodoCard = ({ todos }) => {
             </div>
           </article>
         ))}
-    </section >
+      </section>
 
-      { isOpen && <Modal modalData={modalData} setIsOpen={setIsOpen} isOpen={isOpen} />
-}
+      {isOpen && <Modal modalData={modalData} setIsOpen={setIsOpen} isOpen={isOpen} />}
     </>
   );
 };

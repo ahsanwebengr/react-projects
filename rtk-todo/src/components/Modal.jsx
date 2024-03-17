@@ -1,6 +1,6 @@
 import { useEditTodoMutation, useGetTodosQuery } from '../rtk/services/Api';
 import { X } from 'lucide-react';
-import { Button, Input, TextArea } from './index';
+import { Button, Input, SelectMenu, TextArea } from './index';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -15,15 +15,17 @@ const Modal = ({ modalData, isOpen, setIsOpen }) => {
   });
 
   const id = modalData._id;
-  console.log(id);
 
   const handleEditValue = e => {
     const { name, value } = e.target;
+    const booleanValue = value === 'true';
     setEditValue(prevValue => ({
       ...prevValue,
-      [name]: value,
+      [name]: name === 'isComplete' ? booleanValue : value,
     }));
   };
+
+  console.log(editValue);
 
   const handleEditSubmissionForm = async e => {
     e.preventDefault();
@@ -64,6 +66,12 @@ const Modal = ({ modalData, isOpen, setIsOpen }) => {
                     onChange={handleEditValue}
                     name={'title'}
                   />
+                </div>
+                <div className='col-span-2'>
+                  <SelectMenu onChange={handleEditValue} name='isComplete'>
+                    <option value='false'>Pending</option>
+                    <option value='true'>Complete</option>
+                  </SelectMenu>
                 </div>
                 <div className='col-span-2'>
                   <TextArea
