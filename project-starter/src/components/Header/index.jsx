@@ -1,7 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { navLinks } from '../../data';
 
 const Header = () => {
+  const { pathname } = useLocation();
+
   return (
     <header className='container max-w-screen-2xl shadow-md py-4'>
       <nav className='flex justify-between items-center'>
@@ -9,7 +12,16 @@ const Header = () => {
         <ul className='flex gap-4'>
           {navLinks.map(nav => (
             <li key={nav?.id}>
-              <NavLink to={nav?.path}>{nav?.label}</NavLink>
+              <NavLink
+                className={`${
+                  pathname === nav.path
+                    ? 'text-primary font-semibold border-b-2'
+                    : 'text-black'
+                }`}
+                to={nav?.path}
+              >
+                {nav?.label}
+              </NavLink>
             </li>
           ))}
         </ul>
