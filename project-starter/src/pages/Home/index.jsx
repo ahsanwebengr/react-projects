@@ -15,7 +15,7 @@ const Home = () => {
       {isLoading && (
         <h3 className=' text-center text-4xl font-bold'>Users Loading ...</h3>
       )}
-      <h1 className='my-5 text-3xl font-bold tracking-wide'>All User List</h1>
+      <h1 className='my-5 text-3xl font-bold tracking-wide font-poppins'>All User List</h1>
       {users && users.length > 0 ? (
         <div className='grid grid-cols-3 gap-4'>
           {users.map(user => (
@@ -23,7 +23,7 @@ const Home = () => {
               className='border-gray-200 border-2 py-6 text-center rounded-md'
               key={user?.id}
             >
-              <h2 className='font-medium'>{user?.firstName}</h2>
+              <h2 className='font-medium font-poppins'>{user?.firstName}</h2>
               <h3>{user?.email}</h3>
               <p>{user?.birthDate}</p>
             </div>

@@ -11,6 +11,9 @@ export default {
         '2xl': '6rem',
       },
     },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
     extend: {
       colors: {
         primary: '#7CB839',
