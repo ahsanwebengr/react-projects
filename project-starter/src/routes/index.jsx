@@ -7,6 +7,7 @@ import { Preloader } from '../components';
 const Home = lazy(() => import('../pages/Home'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 const routes = [
   {
@@ -16,6 +17,7 @@ const routes = [
       { path: PATHS.home, element: <Home /> },
       { path: PATHS.about, element: <About /> },
       { path: PATHS.contact, element: <Contact /> },
+      { path: PATHS.notFound, element: <NotFound /> },
     ],
   },
 ];

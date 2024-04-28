@@ -17,7 +17,7 @@ const Home = () => {
       )}
       <h1 className='my-5 text-3xl font-bold tracking-wide font-poppins'>All User List</h1>
       {users && users.length > 0 ? (
-        <div className='grid grid-cols-3 gap-4'>
+        <div className='grid grid-cols-3 gap-4 mb-3'>
           {users.map(user => (
             <div
               className='border-gray-200 border-2 py-6 text-center rounded-md'

@@ -1,7 +1,8 @@
 const PATHS = {
-  home: '/home',
+  home: '/',
   about: '/about',
   contact: '/contact',
+  notFound: '*',
 };
 
 export default PATHS;
