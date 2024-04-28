@@ -1,8 +1,8 @@
 const config = {
-  BASE_URL: 'http://localhost:8080',
+  BASE_URL: import.meta.env.VITE_BASE_URL,
   ENDPOINTS: {
-    USERS: '/api/users',
-    POSTS: '/api/posts',
+    USERS: '/users',
+    POSTS: '/posts',
   },
 };
 

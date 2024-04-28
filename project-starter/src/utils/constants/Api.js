@@ -6,8 +6,9 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(config => {
-  const accessToken = window.localStorage.getItem('token');
-  config.headers.Authorization = `Bearer ${accessToken}`;
+  // TODO: FOR AUTHENTICATION ONLY
+  //   const accessToken = window.localStorage.getItem('token');
+  //   config.headers.Authorization = `Bearer ${accessToken}`;
 
   return config;
 });
