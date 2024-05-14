@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+   :root {
+      --color-primary: hsl(0, 0, 0%);
+      --color-secondary: hsl(0, 0, 0%);
+   }
+}
+
+.theme-default {
+   --color-primary: #000;
+   --color-secondary: hsl(0, 0, 0%);
+}
+
+.theme-red {
+   --color-primary: hsl(0, 100%, 50%);
+   --color-secondary: hsl(0, 100%, 50%);
+}
+
+.theme-blue {
+   --color-primary: hsl(219, 86%, 51%);
+   --color-secondary: hsl(240, 78%, 46%);
+}
+
+.theme-orange {
+   --color-primary: hsl(25, 92%, 48%);
+   --color-secondary: hsl(25, 86%, 61%);
+}
