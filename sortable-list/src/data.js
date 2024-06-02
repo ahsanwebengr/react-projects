@@ -17,6 +17,12 @@ export const data = [
         badge: true,
         badgeLabels: ['Clean', 'UI Design']
     },
+        {
+        id: 4,
+        desc: 'React Drap and Drop.',
+        badge: false,
+        badgeLabels: null
+    },
 ];
 
 export const boards = [
