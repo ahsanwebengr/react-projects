@@ -12,7 +12,7 @@ const inputs = [
     id: 2,
     type: 'password',
     label: 'Password',
-    placeholder: 'Enter Password',
+    placeholder: 'Enter password',
     name: 'password',
   },
 ];
