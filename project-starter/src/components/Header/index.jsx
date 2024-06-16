@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { navLinks } from '../../data';
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className='container max-w-screen-2xl shadow-md py-4'>
       <nav className='flex justify-between items-center'>
-        <h4 className=''>Header</h4>
+        <Link to={'/'}>Header</Link>
         <ul className='flex gap-4'>
           {navLinks.map(nav => (
             <li key={nav?.id}>
