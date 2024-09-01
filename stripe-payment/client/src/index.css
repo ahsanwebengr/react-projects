@@ -1,0 +1,63 @@
+.checkout-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.card-element {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #5469d4;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:disabled {
+  background-color: #aab7c4;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #4353b3;
+}
+
+.error-message {
+  color: #e53935;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: #43a047;
+  margin-top: 10px;
+}
