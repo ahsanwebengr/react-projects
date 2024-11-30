@@ -4,6 +4,7 @@ function findMaxNum(arr) {
     if (num > max) max = num;
   });
 
+
   return max;
 }
 
