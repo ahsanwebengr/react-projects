@@ -4,7 +4,7 @@ const router = express.Router();
 require('dotenv').config();
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const RECEIVER_EMAIL = process.env.CONTACT_RECEIVER_EMAIL;
+const SENDER_EMAIL = process.env.CONTACT_SENDER_EMAIL;
 
 router.post('/', async (req, res) => {
   const { firstName, lastName, email, subject, message } = req.body;
@@ -14,14 +14,10 @@ router.post('/', async (req, res) => {
       'https://api.brevo.com/v3/smtp/email',
       {
         sender: {
-          name: `${firstName} ${lastName}`,
-          email: 'noreply@yourdomain.com', // MUST be verified sender email
+          name: `Real Chain LLC`,
+          email: SENDER_EMAIL, // MUST be verified sender email
         },
-        to: [{ email: RECEIVER_EMAIL }],
-        replyTo: {
-          email,
-          name: `${firstName} ${lastName}`,
-        },
+        to: [{ email: email }],
         subject: `Contact Form: ${subject}`,
         htmlContent: `
           <h2>New Contact Form Submission</h2>
