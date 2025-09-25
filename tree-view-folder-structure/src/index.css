@@ -1,0 +1,61 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9fafb;
+  color: #333;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 16px;
+  color: #2563eb; /* Blue heading */
+}
+
+/* Tree view container */
+.tree-view {
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Folder */
+.folder {
+  cursor: pointer;
+  font-weight: 600;
+  color: #374151;
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+}
+
+.folder:hover {
+  color: #1d4ed8;
+}
+
+/* File */
+.file {
+  margin-left: 24px;
+  padding: 2px 0;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+.file:hover {
+  color: #111827;
+}
+
+.children {
+  margin-left: 16px;
+  border-left: 1px dashed #d1d5db; /* vertical line */
+  padding-left: 12px; /* spacing from line */
+}
