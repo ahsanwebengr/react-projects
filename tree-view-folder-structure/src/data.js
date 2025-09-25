@@ -19,6 +19,11 @@ export const folderData = {
           isFolder: true,
           children: [
             {
+              name: 'images',
+              isFolder: true,
+              children: [{ name: 'logo.svg', isFolder: false }, { name: 'bg.png', isFolder: false }],
+            },
+            {
               name: 'css',
               isFolder: true,
               children: [{ name: 'style.css', isFolder: false }],
@@ -44,6 +49,8 @@ export const folderData = {
         },
       ],
     },
+
+    { name: 'index.html', isFolder: false },
     { name: 'App.jsx', isFolder: false },
     { name: 'main.jsx', isFolder: false },
     { name: 'package.json', isFolder: false },

@@ -7,8 +7,8 @@
 }
 
 body {
-  background-color: #f9fafb;
-  color: #333;
+  background-color: #222;
+  color: #f9f9f9;
   padding: 20px;
 }
 
@@ -19,8 +19,8 @@ h2 {
 
 /* Tree view container */
 .tree-view {
-  border: 1px solid #e5e7eb;
-  background: #fff;
+  border: 1px solid #444;
+  background: #333;
   padding: 12px;
   border-radius: 8px;
   max-width: 400px;
@@ -31,7 +31,7 @@ h2 {
 .folder {
   cursor: pointer;
   font-weight: 600;
-  color: #374151;
+  color: #f7f7f7;
   margin: 4px 0;
   display: flex;
   align-items: center;
@@ -45,17 +45,14 @@ h2 {
 .file {
   margin-left: 24px;
   padding: 2px 0;
-  color: #6b7280;
   display: flex;
   align-items: center;
-}
-
-.file:hover {
-  color: #111827;
+  gap: 2px;
+  cursor: pointer;
 }
 
 .children {
   margin-left: 16px;
   border-left: 1px dashed #d1d5db; /* vertical line */
-  padding-left: 12px; /* spacing from line */
+  padding-left: 12px;
 }

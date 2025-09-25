@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getFileIcon } from './utils/fileIcon';
 
 const Folder = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,11 @@ const Folder = ({ data }) => {
       </div>
     );
   } else {
-    return <div className='file'>📄 {data.name}</div>;
+    return (
+      <div className='file'>
+        {getFileIcon(data.name)} {data.name}
+      </div>
+    );
   }
 };
 
